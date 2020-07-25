@@ -7,5 +7,5 @@ resource "aws_route53_record" "main" {
   name    = var.record_name
   type    = "A"
   ttl     = "300"
-  records = [aws_eip.main.public_ip]
+  records = [aws_instance.main.public_ip]
 }

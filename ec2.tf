@@ -7,12 +7,10 @@ resource "aws_instance" "main" {
   user_data                   = data.template_file.userdata.rendered
   key_name                    = "minecraft"
   tags = { Name = "minecraft" }
-}
 
-resource "aws_eip" "main" {
-  instance = aws_instance.main.id
-  vpc      = true
-  tags     = { Name = "minecraft" }
+  lifecycle {
+    ignore_changes = ["user_data"]
+  }
 }
 
 data "template_file" "userdata" {

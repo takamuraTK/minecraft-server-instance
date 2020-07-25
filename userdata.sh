@@ -12,6 +12,7 @@ mv -f /tmp/eula.txt /root/minecraft/eula.txt
 # add plugin
 wget -P /root/minecraft/plugins https://media.forgecdn.net/files/2990/815/Dynmap-3.1-beta-1-spigot.jar
 wget -P /root/minecraft/plugins https://lol.scarsz.me/WTtrsN/DiscordSRV-Build-1.19.1.jar
+wget -P /root/minecraft/plugins https://media.forgecdn.net/files/2768/520/AntiCreeper.jar
 
 # start server
 screen -d -m -S "spigot" java -Xms3G -Xmx4G -XX:+UseConcMarkSweepGC -jar spigot-1.14.4.jar

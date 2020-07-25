@@ -37,16 +37,16 @@ resource "aws_security_group" "public" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
-    from_port   = 8123
-    to_port     = 8123
+    from_port   = 80
+    to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
-    from_port   = 22
-    to_port     = 22
+    from_port   = 443
+    to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = ["203.165.237.116/32"]
+    cidr_blocks = ["${chomp(data.http.ifconfig.body)}/32"]
   }
   egress {
     from_port   = 0
@@ -55,4 +55,8 @@ resource "aws_security_group" "public" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = { Name = "minecraft" }
+}
+
+data http ifconfig {
+  url = "http://ipv4.icanhazip.com/"
 }
